@@ -29,10 +29,17 @@ namespace TDL.ViewModels
         private ICommand? doneCmd;
         public ICommand DoneCmd => doneCmd ??= new LambdaCommand(DoneCmdExecute, CanDoneCmdExecuted);
 
-        private bool CanDoneCmdExecuted(object parameter) => !IsCompleted;
+        private bool CanDoneCmdExecuted(object parameter) => true;
 
-        private void DoneCmdExecute(object parameter)
+        private async void DoneCmdExecute(object parameter)
         {
+            var service = App.Host.Services.GetRequiredService<IEntityService<TodoViewModel>>();
+
+            if (service != null)
+            {
+                Content += "g";
+                await service.UpdateAsync(this);
+            }
         }
 
         public override string ToString()

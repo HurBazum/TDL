@@ -7,7 +7,7 @@ namespace TDL.ViewModels
 {
     public class MainViewModels : BaseViewModel
     {
-        private BaseViewModel _viewModel = App.Host.Services.GetRequiredService<AddTodoViewModel>();
+        private BaseViewModel _viewModel = App.Host.Services.GetRequiredService<TodoListViewModel>();
 
         public BaseViewModel ViewModel
         {

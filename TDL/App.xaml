@@ -16,6 +16,13 @@
             <DataTemplate DataType="{x:Type ViewModels:AddTodoViewModel}">
                 <views:AddTodoView />
             </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/CheckDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/BtnDictionary.xaml" />
+                <ResourceDictionary Source="/Resources/TodoCard.xaml" />
+                <ResourceDictionary Source="/Resources/TextDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -5,23 +5,73 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TDL.Views.Pages"
              xmlns:vm="clr-namespace:TDL.ViewModels"
+             xmlns:icons="clr-namespace:TDL.Views.Icons"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="650" d:DesignWidth="800"
              DataContext="{Binding TodoListViewModel, Source={StaticResource Locator}}">
     <DockPanel>
-        <ListBox DockPanel.Dock="Top" MinHeight="300" ItemsSource="{Binding Todos}" SelectedItem="{Binding SelectedTodo}">
+        <ListBox DockPanel.Dock="Top" MinHeight="300" 
+                 ItemsSource="{Binding Todos}" 
+                 SelectedItem="{Binding SelectedTodo}"
+                 VirtualizingPanel.IsVirtualizing="True"
+                 CacheMode="BitmapCache">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Command="{Binding DoneCmd}" IsChecked="{Binding IsCompleted}" />
-                        <TextBlock Text="{Binding Content}" FontSize="20" FontWeight="ExtraBlack" Width="auto" VerticalAlignment="Top" />
-                    </StackPanel>
+                    <Grid x:Name="temp" Height="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="675" />
+                            <ColumnDefinition Width="70" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <CheckBox Grid.Column="0"
+                                      Style="{StaticResource CustomCheck2}"
+                                      IsChecked="{Binding IsCompleted}"
+                                      Height="60" Width="40"/>
+                        </StackPanel>
+                        <TextBlock x:Name="tBlock"
+                                   Grid.Column="1"
+                                   Text="{Binding Content}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Padding="5 0 5 0"
+                                   FontSize="14"
+                                   FontWeight="Medium"/>
+                        <TextBox x:Name="tBox"
+                                 Grid.Column="1"
+                                 Text="{Binding Content}"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Width="665"
+                                 Padding="5 0 5 0"
+                                 FontSize="14"
+                                 FontWeight="Medium"
+                                 Visibility="Collapsed"/>
+                        <CheckBox Grid.Column="2" x:Name="cBox" 
+                                  IsChecked="False" Height="55" Width="55"
+                                  Style="{StaticResource CustomEditCheck}" />
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True" SourceName="cBox">
+                            <Setter Property="Visibility" Value="Visible" TargetName="tBox" />
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="tBlock" />
+                        </Trigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="{Binding DeleteBtnContent}" Height="40" Width="150" Margin="0 0 10 10" Command="{Binding DeleteTodoCmd}" />
-            <Button Content="{Binding UpdateBtnContent}" Height="40" Width="150" Margin="10 0 0 10" Command="{Binding UpdateTodoCmd}" />
+            <Button Content="{Binding DeleteBtnContent}" 
+                    Height="40" Width="150" Margin="0 0 10 10" 
+                    Command="{Binding DeleteTodoCmd}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            <Button Content="{Binding UpdateBtnContent}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="40" Width="150" 
+                    Margin="10 0 0 10" Command="{Binding UpdateTodoCmd}" />
         </StackPanel>
     </DockPanel>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using TDL.Infrastructure.Commands;
 using TDL.Interfaces;
@@ -25,6 +26,13 @@ namespace TDL.ViewModels
         }
 
         #region properties
+
+        private string _title = "All of the todos";
+        public string Title
+        {
+            get => _title;
+            set => Set(ref _title, value);
+        }
 
         private string _deleteBtnContent = "Delete";
         public string DeleteBtnContent
@@ -97,19 +105,6 @@ namespace TDL.ViewModels
             else
             { 
                 UpdateBtnContent = "error";
-            }
-        }
-
-        private ICommand? selectTodoByCheckBoxCmd;
-        public ICommand SelectTodoByCheckBoxCmd => selectTodoByCheckBoxCmd ??= new LambdaCommand(SelectTodoByCheckBoxCmdExecute, CanSelectTodoByCheckBoxCmdExecuted);
-
-        private bool CanSelectTodoByCheckBoxCmdExecuted(object parameter) => true;
-
-        private void SelectTodoByCheckBoxCmdExecute(object parameter)
-        {
-            if(parameter is (TodoViewModel))
-            {
-                SelectedTodo = (TodoViewModel)parameter;
             }
         }
 

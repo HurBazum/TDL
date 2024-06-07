@@ -6,14 +6,17 @@
         xmlns:local="clr-namespace:TDL.ViewModels"
         xmlns:Views="clr-namespace:TDL.Views.Pages"
         mc:Ignorable="d"
-        Height="550" Width="800"
+        Height="800" Width="800"
+        Background="#1c3df3"
+        ResizeMode="NoResize"
+        
         Title="{Binding Title}"
         DataContext="{Binding MainViewModels, Source={StaticResource Locator}}">
-    <DockPanel>
-        <ContentControl Content="{Binding ViewModel}" DockPanel.Dock="Top" Height="380" />
+    <DockPanel Background="#FF331A1A">
+        <ContentControl Content="{Binding ViewModel}" DockPanel.Dock="Top" Height="650" />
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 20">
-            <Button Content="New" Height="45" Width="150" Margin="0 0 10 0" Command="{Binding ToAddCmd}" />
-            <Button Content="All" Height="45" Width="150" Margin="10 0 0 0" Command="{Binding ToListCmd}" />
+            <Button Content="New" Height="45" Width="150" Margin="0 0 10 0" Command="{Binding ToAddCmd}" Background="#FF864925" />
+            <Button Content="All" Height="45" Width="150" Margin="10 0 0 0" Command="{Binding ToListCmd}" Background="#FF6F462E" />
         </StackPanel>
     </DockPanel>
 </Window>

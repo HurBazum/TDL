@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:TDL.Views.Icons"
+                    xmlns:vm="clr-namespace:TDL.ViewModels">
+    <DataTemplate x:Key="TodoCard" DataType="{x:Type vm:TodoViewModel}">
+        <Button x:Name="card"
+                Margin="5" 
+                Style="{StaticResource BtnBase}"
+                Background="AliceBlue"
+                Height="65" Width="740"
+                VerticalAlignment="Center">
+            <Button.Content>
+                <Grid Background="AliceBlue"
+                      Height="65" Width="750"
+                      VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="70" />
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" Style="{StaticResource CustomCheck}" IsChecked="{Binding IsCompleted}" x:Name="check" />
+                    <TextBlock x:Name="txt"
+                               Grid.Column="1"
+                       Text="{Binding Content}"
+                       VerticalAlignment="Center"
+                       Padding="15 5"
+                       FontSize="14"
+                       FontWeight="Medium"
+                       Width="560"/>
+                    <Button Grid.Column="2" Height="50" Width="50" Visibility="Visible" x:Name="edit">
+                        <StackPanel>
+                            <icons:EditIcon Size="37" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <DataTemplate.Triggers>
+            <Trigger SourceName="card" Property="IsFocused" Value="True">
+                <Setter Property="Button.Visibility" Value="Visible" TargetName="edit" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TodoCard2" DataType="{x:Type vm:TodoViewModel}">
+        <RadioButton x:Name="card" Style="{StaticResource cRadio}" />
+        <DataTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True" SourceName="card">
+                <Setter Property="RadioButton.IsChecked" Value="True" TargetName="card" />
+                <Setter Property="ToggleButton.IsChecked" Value="True" TargetName="card" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="False" SourceName="card">
+                <Setter Property="IsChecked" Value="False" TargetName="card" />
+                <Setter Property="ToggleButton.IsChecked" Value="False" TargetName="card" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>
