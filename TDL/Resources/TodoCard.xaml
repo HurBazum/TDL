@@ -55,4 +55,56 @@
             </Trigger>
         </DataTemplate.Triggers>
     </DataTemplate>
+
+    <DataTemplate x:Key="TodoCard3" DataType="{x:Type vm:TodoViewModel}">
+        <Grid x:Name="temp" Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="655" />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <CheckBox x:Name="cBox0"
+                      Grid.Column="0"
+                      Style="{StaticResource CustomCheck}"
+                      IsChecked="{Binding IsCompleted}"
+                      Height="60" Width="50"
+                      IsEnabled="False" />
+            </StackPanel>
+            <TextBlock x:Name="tBlock"
+                   Grid.Column="1"
+                   Text="{Binding Content}"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Padding="5 0 5 0"
+                   FontSize="14"
+                   FontWeight="Medium"/>
+            <TextBox x:Name="tBox"
+                 Grid.Column="1"
+                 Text="{Binding Content}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Width="665"
+                 Padding="5 0 5 0"
+                 FontSize="14"
+                 FontWeight="Medium"
+                 Visibility="Collapsed"/>
+            <CheckBox Grid.Column="2" x:Name="cBox" 
+                  IsChecked="False" Height="55" Width="55"
+                  Style="{StaticResource CustomEditCheck}" 
+                  Visibility="Hidden" />
+        </Grid>
+        <DataTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True" SourceName="cBox">
+                <Setter Property="Visibility" Value="Visible" TargetName="tBox" />
+                <Setter Property="Visibility" Value="Collapsed" TargetName="tBlock" />
+            </Trigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+            AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                <Setter Property="CheckBox.Visibility" Value="Visible" TargetName="cBox" />
+                <Setter Property="CheckBox.IsEnabled" Value="True" TargetName="cBox0" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
 </ResourceDictionary>
