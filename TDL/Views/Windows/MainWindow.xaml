@@ -12,7 +12,8 @@
         
         Title="{Binding Title}"
         DataContext="{Binding MainViewModels, Source={StaticResource Locator}}">
-    <DockPanel Background="#FF331A1A">
+    <!-- #FFC7965B -->
+    <DockPanel Background="Bisque">
         <ContentControl Content="{Binding ViewModel}" DockPanel.Dock="Top" Height="650" />
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 20">
             <Button Content="New" Height="45" Width="150" Margin="0 0 10 0" Command="{Binding ToAddCmd}" Background="#FF864925" />

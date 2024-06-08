@@ -15,14 +15,14 @@
                                    RadiusY="10"
                                    Width="50"
                                    Height="20"
-                                   Stroke="Red"
+                                   Stroke="#FFC19128"
                                    Fill="White"
                                    Grid.ColumnSpan="2"/>
                         <Ellipse x:Name="point"
                                  Width="14"
                                  Height="14"
-                                 Stroke="Red"
-                                 Fill="Red"
+                                 Stroke="#FFC19128"
+                                 Fill="#FFC19128"
                                  StrokeThickness="1"
                                  Grid.Column="0"/>
                     </Grid>
@@ -30,7 +30,7 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Grid.Column" Value="1" TargetName="point" />
                             <Setter Property="Ellipse.Fill" Value="White" TargetName="point" />
-                            <Setter Property="Rectangle.Fill" Value="Red" TargetName="rect" />
+                            <Setter Property="Rectangle.Fill" Value="#FFC19128" TargetName="rect" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="ToolTip" Value="IsCompleted" />
@@ -75,13 +75,15 @@
                     <TextBlock x:Name="edit"
                                Height="{TemplateBinding Height}"
                                Width="{TemplateBinding Width}"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                Text="edit"
-                               Foreground="Red" />
+                               FontSize="17"
+                               FontWeight="Heavy"
+                               Foreground="#FFC19128" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="TextBlock.Foreground" Value="OldLace" TargetName="edit" />
+                            <Setter Property="TextBlock.Foreground" Value="#FFD0AD5F" TargetName="edit" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

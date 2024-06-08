@@ -57,43 +57,53 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TodoCard3" DataType="{x:Type vm:TodoViewModel}">
-        <Grid x:Name="temp" Height="60">
+        <Grid x:Name="temp" MinHeight="60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="655" />
-                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Center"
+            <StackPanel HorizontalAlignment="Left"
                     VerticalAlignment="Center">
                 <CheckBox x:Name="cBox0"
-                      Grid.Column="0"
-                      Style="{StaticResource CustomCheck}"
-                      IsChecked="{Binding IsCompleted}"
-                      Height="60" Width="50"
-                      IsEnabled="False" />
+                          Grid.Column="0"
+                          Style="{StaticResource CustomCheck}"
+                          IsChecked="{Binding IsCompleted}"
+                          Height="60" Width="50"
+                          IsEnabled="False"
+                          ToolTip="completed status"/>
             </StackPanel>
             <TextBlock x:Name="tBlock"
-                   Grid.Column="1"
-                   Text="{Binding Content}"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Padding="5 0 5 0"
-                   FontSize="14"
-                   FontWeight="Medium"/>
+                       Grid.Column="1"
+                       Text="{Binding Content}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       LineStackingStrategy="BlockLineHeight"                       
+                       LineHeight="18.482"
+                       TextWrapping="Wrap"
+                       Padding="5 0 5 0"
+                       FontSize="14"
+                       FontWeight="Medium"/>
             <TextBox x:Name="tBox"
-                 Grid.Column="1"
-                 Text="{Binding Content}"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 Width="665"
-                 Padding="5 0 5 0"
-                 FontSize="14"
-                 FontWeight="Medium"
-                 Visibility="Collapsed"/>
+                     Grid.Column="1"
+                     Text="{Binding Content}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     TextWrapping="Wrap"
+                     MinLines="1"
+                     VerticalScrollBarVisibility="Hidden"
+                     Padding="2 0 2 0"
+                     BorderThickness="0"
+                     Width="645"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Visibility="Collapsed" 
+                     Background="#FF56E4D3"/>
             <CheckBox Grid.Column="2" x:Name="cBox" 
-                  IsChecked="False" Height="55" Width="55"
-                  Style="{StaticResource CustomEditCheck}" 
-                  Visibility="Hidden" />
+                      IsChecked="False" Width="45"
+                      VerticalAlignment="Center" HorizontalAlignment="Center"
+                      Style="{StaticResource CustomEditCheck}" 
+                      Visibility="Hidden" />
         </Grid>
         <DataTemplate.Triggers>
             <Trigger Property="IsChecked" Value="True" SourceName="cBox">
