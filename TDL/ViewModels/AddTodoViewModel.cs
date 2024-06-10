@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using TDL.BLL;
+﻿using System.Windows.Input;
 using TDL.Infrastructure.Commands;
 using TDL.Interfaces;
 using TDL.ViewModels.Base;
@@ -34,7 +31,7 @@ namespace TDL.ViewModels
         }
 
         ICommand? addTodoItemCmd;
-        public ICommand AddTodoItemCmd => addTodoItemCmd ??= new LambdaCommand(AddTodoItemCmdExecute, CanAddTodoItemCmdExecuted);
+        public ICommand AddTodoItemCmd => addTodoItemCmd ??= new LambdaCommand(AddTodoItemCmdExecute, CanTodoItemCmdExecuted);
 
         private async void AddTodoItemCmdExecute(object parameter)
         {
@@ -47,11 +44,11 @@ namespace TDL.ViewModels
             else
             {
                 TodoText = string.Empty;
-                Message = $"todo was added {todoResponse.Value.Id}";
+                Message = $"todo {todoResponse.Value.Id} was added";
             }
         }
 
-        private bool CanAddTodoItemCmdExecuted(object parameter)
+        private bool CanTodoItemCmdExecuted(object parameter)
         {
             if(TodoText == string.Empty)
             {
@@ -61,6 +58,12 @@ namespace TDL.ViewModels
             return true;
         }
 
+        private ICommand? clearTodoTextCmd;
+        public ICommand ClearTodoTextCmd => clearTodoTextCmd ??= new LambdaCommand(ClearTodoTextCmdExecuted, CanTodoItemCmdExecuted);
 
+        private void ClearTodoTextCmdExecuted(object parameter)
+        {
+            TodoText = string.Empty;
+        }
     }
 }

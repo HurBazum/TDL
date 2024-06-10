@@ -67,7 +67,7 @@
                     VerticalAlignment="Center">
                 <CheckBox x:Name="cBox0"
                           Grid.Column="0"
-                          Style="{StaticResource CustomCheck}"
+                          Style="{StaticResource CompleteCheck}"
                           IsChecked="{Binding IsCompleted}"
                           Height="60" Width="50"
                           IsEnabled="False"

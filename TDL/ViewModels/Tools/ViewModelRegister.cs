@@ -11,7 +11,7 @@ namespace TDL.ViewModels.Tools
             .AddTransient<AddTodoViewModel>()
             .AddTransient<TodoListViewModel>()
             .AddTransient<TodoViewModel>();
-            public static IServiceCollection AddServices(this IServiceCollection services) => services
-                .AddTransient<IEntityService<TodoViewModel>, TodoService<TodoViewModel>>();
+        public static IServiceCollection AddServices(this IServiceCollection services) => services
+            .AddTransient<IEntityService<TodoViewModel>, TodoService<TodoViewModel>>();
     }
 }

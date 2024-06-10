@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TDL.ViewModels"
         xmlns:Views="clr-namespace:TDL.Views.Pages"
+        xmlns:icons="clr-namespace:TDL.Views.Icons"
         mc:Ignorable="d"
         Height="800" Width="800"
         Background="#1c3df3"

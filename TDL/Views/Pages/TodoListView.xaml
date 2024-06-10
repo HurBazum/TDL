@@ -17,8 +17,7 @@
                  ItemTemplate="{StaticResource TodoCard3}"
                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
                  VirtualizingPanel.IsVirtualizing="True"
-                 CacheMode="BitmapCache" />
-        <TextBlock Background="#FF56E4D3" Visibility="Collapsed" />
+                 CacheMode="BitmapCache" d:ItemsSource="{d:SampleData ItemCount=5}" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="{Binding DeleteBtnContent}" 
                     Height="40" Width="150" Margin="0 0 10 10" 

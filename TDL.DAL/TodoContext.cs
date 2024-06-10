@@ -14,7 +14,8 @@ namespace TDL.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data source=.\SQLEXPRESS;Database=TodoDatabase;Trusted_Connection=True;Trust Server Certificate=True;");
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            optionsBuilder.UseSqlServer($"Data source=.\\SQLEXPRESS;Database={currentDirectory}TodoDatabase;Trusted_Connection=True;Trust Server Certificate=True;");
         }
     }
 }

@@ -7,18 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:Background="Bisque"
-             DataContext="{Binding AddTodoViewModel, Source={StaticResource Locator}}" Background="#FF58432A">
-    <DockPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top">
-            <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold" Margin="10" />
-        </StackPanel>
-        <StackPanel Orientation="Vertical">
-            <TextBox Style="{DynamicResource TextBoxStyle1}" Text="{Binding TodoText, UpdateSourceTrigger=PropertyChanged}" Margin="10" FontSize="14" Padding="4"  />
+             DataContext="{Binding AddTodoViewModel, Source={StaticResource Locator}}">
+    <DockPanel Background="Transparent" Height="800">
+        <StackPanel Orientation="Vertical"
+                    Height="350"
+                    HorizontalAlignment="Center" DockPanel.Dock="Top">
+            <TextBlock Text="{Binding Title}"
+                       HorizontalAlignment="Center"
+                       FontSize="22" FontWeight="Bold" Margin="10" />
+            <TextBox x:Name="tBox"
+                     Style="{DynamicResource TextBoxStyle1}" 
+                     Text="{Binding TodoText, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="10" FontSize="14" Padding="4"
+                     Width="700" />
             <TextBlock Text="{Binding Message}" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Add" Height="30" Width="100" Margin="10" Command="{Binding AddTodoItemCmd}" />
-                <Button Content="Cancel" Height="30" Width="100" Margin="0 0 10 0" />
-            </StackPanel>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Height="100">
+            
+            <Button Content="Add" Height="40" Width="150" Margin="0 0 10 10" Command="{Binding AddTodoItemCmd}" />
+            <Button Content="Cancel"
+                    Height="40" Width="150"
+                    Margin="10 0 0 10"
+                    Command="{Binding ClearTodoTextCmd}" />
         </StackPanel>
     </DockPanel>
 </UserControl>

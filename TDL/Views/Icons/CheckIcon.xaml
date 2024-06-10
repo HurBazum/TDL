@@ -9,9 +9,10 @@
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Viewbox Width="{Binding Size}" Height="{Binding Size}">
-            <Path Stroke="Beige" StrokeThickness="3">
+            <Path Stroke="{Binding Color}" StrokeThickness="3">
                 <Path.Data>
-                    <PathGeometry Figures="M22 49 L47 18 M24 49 L0 29" />
+                    <!-- m l(x2), m l(x2)-->
+                    <PathGeometry Figures="M28.6 40 L47 18 M30.6 40 L22 32.59 M21 41 L41 18 M22.1 40 L10.8 30" />
                 </Path.Data>
             </Path>
         </Viewbox>

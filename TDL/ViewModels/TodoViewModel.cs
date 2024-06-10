@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TDL.Infrastructure.Commands;
 using TDL.Interfaces;
 using TDL.ViewModels.Base;
@@ -31,15 +28,8 @@ namespace TDL.ViewModels
 
         private bool CanDoneCmdExecuted(object parameter) => true;
 
-        private async void DoneCmdExecute(object parameter)
+        private void DoneCmdExecute(object parameter)
         {
-            var service = App.Host.Services.GetRequiredService<IEntityService<TodoViewModel>>();
-
-            if (service != null)
-            {
-                Content += "g";
-                await service.UpdateAsync(this);
-            }
         }
 
         public override string ToString()
